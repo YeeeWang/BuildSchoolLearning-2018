@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container" style="margin-left:12cm">
+        <div class="row" style="width:15cm">
+            <div class="col text-center">
+                <h3>稅額試算</h3>
+            </div>
+        </div>
+        <div class="row" style="width:15cm">
+            <div class="col text-center">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" Id="earn">
+                    <button type="button" class="btn btn-primary ml-3" Id="count">計算</button>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="width:15cm">
+            <div class="col text-center">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" Id="rate">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="width:15cm">
+            <div class="col text-center">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" Id="min">
+                </div>
+            </div>
+        </div>
+        <div class="row" style="width:15cm">
+            <div class="col text-center">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" Id="pay">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        var taxArray = [{rate: 0.05,amountFrom: 0,amountTo: 540000,min : 0},
+            {rate: 0.12,amountFrom: 540000,amountTo: 1210000,min : 37800},
+            {rate: 0.2,amountFrom: 1210000,amountTo: 2420000,min : 134600},
+            {rate: 0.3,amountFrom: 2420000,amountTo: 4530000,min : 376600},
+            {rate: 0.4,amountFrom: 4530000,amountTo: 10310000,min : 829600},
+            {rate: 0.5,amountFrom: 10310000,amountTo: 0,min : 1345100},
+        ];
+        /*for (var item of taxArray) {
+            document.write(item.rate);
+            document.write("<br/>");
+            document.write(item.amountForm);
+            document.write("<br/>");
+            document.write(item.amountTo);
+            document.write("<br/>");
+        }*/
+
+        var rate = function (x) {
+            if (x < 540000) return 0.05;
+            if (x >= 540000 && x < 1210000) return 0.12;
+            if (x >= 1210000 && x < 2420000) return 0.2;
+            if (x >= 2420000 && x < 4530000) return 0.3;
+            if (x >= 4530000 && x < 10310000) return 0.4;
+            if (x >= 10310000) return 0.45;
+        }
+
+        //var netincomes = [437482, 609385, 938271, 1132785, 3090218, 6448293, 9938100, 10102837, 18902831];
+        var count = document.getElementById("count");
+        count.onclick = function() {
+        var earn=document.getElementById("earn").value;
+        var rate;
+        var min;
+        for (var item of taxArray) {
+            if (item.amountFrom > item.amountTo) {
+                if (earn >= item.amountFrom) {
+                    rate = item.rate;
+                    min = item.min;
+                    break;
+                } else {
+                    rate = 0;
+                    min = 0;
+                    break;
+                }
+            } else {
+                if (earn >= item.amountFrom && earn < item.amountTo) {
+                    rate = item.rate;
+                    min = item.min;
+                    break;
+                }
+            }           
+        } 
+        document.getElementById("rate").value=rate;  
+        document.getElementById("min").value=min;
+        document.getElementById("pay").value=earn*rate-min;
+    }        
+    </script>
+</body>
+
+</html>

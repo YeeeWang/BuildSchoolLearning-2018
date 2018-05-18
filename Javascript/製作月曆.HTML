@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <style>
+        .bt {
+            background-color: white;
+            border-color: white;
+        }
+
+        button {
+            background-color: rgb(119, 216, 99);
+            border-color: rgb(119, 216, 99);
+            width: 35px;
+            height: 45px
+        }
+
+        table {
+            border: 0.1em solid #0b159e;
+            border-spacing: 0px;
+            width: 100%;
+            margin-top: -15px;
+            margin-bottom: 30px;
+        }
+
+        td {
+            font-size: 20px;
+            border: 0.1em solid #0b159e;
+            border-spacing: 0px;
+            height: 110px;
+            width: 90px;
+            text-align: left;
+            vertical-align: text-top;
+        }
+
+        td:hover {
+            background-color: rgb(107, 201, 207);
+            color: #ffffff;
+        }
+
+        .weekday {
+            color: green;
+            font-weight: bold;
+        }
+
+        .black {
+            color: black;
+            background-color: rgb(198, 250, 250);
+        }
+
+        .red {
+            color: black;
+            background-color: rgb(214, 53, 120);
+        }
+
+        .red:hover {
+            color: white;
+            background-color: rgb(197, 23, 46);
+        }
+
+        .light {
+            color: darkgrey;
+        }
+
+        .light:hover {
+            color: darkgrey;
+            background-color: white;
+        }
+
+        li {
+            list-style-type: none;
+            width: 80%;
+            font-size: 10px;
+            margin-left: 18px;
+            text-align: center;
+        }
+
+        li:hover {
+            color: black;
+        }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md" style="background-color:rgb(197, 16, 101);height:10px">
+            </div>
+        </div>
+        <div class="row" style="height:80px;margin-top:30px">
+            <div class="col-4 text-center">
+                <div class="bt">
+                    <button type="button" id="left">
+                        <i class="fas fa-angle-left" style="color:rgb(197, 23, 46);font-size:20px"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="col-4 text-center">
+                <div class="row" style="font-size:20px;margin-top:-20px">
+                    <div class="col-md" Id="Year" style="color:rgb(10, 51, 92);font-size:30px;font-weight:bold">
+
+                    </div>
+                </div>
+                <div class="row" style="font-size:30px">
+                    <div class="col-md" Id="Month" style="color:dodgerblue;font-size:25px;font-weight:bold">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 text-center">
+                <div class="bt">
+                    <button type="button" id="right">
+                        <i class="fas fa-angle-right" style="color:rgb(197, 23, 46);font-size:20px"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="weekday">
+            <div class="row" style="height:60px;width:1110px;font-size:20px">
+                <div class="col text-center ml-3">
+                    Sun
+                </div>
+                <div class="col text-center ml-2">
+                    Mon
+                </div>
+                <div class="col text-center ml-2">
+                    Tue
+                </div>
+                <div class="col text-center ml-2">
+                    Wed
+                </div>
+                <div class="col text-center ml-2">
+                    Thr
+                </div>
+                <div class="col text-center ml-2">
+                    Fri
+                </div>
+                <div class="col text-center ml-2">
+                    Sat
+                </div>
+            </div>
+        </div>
+        <table style="text-align:center" Id="table">
+
+        </table>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">新增行事曆</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                待辦事項
+                                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" Id="event">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    開始日期(月份為顯示當月)
+                                    <input type="date" class="form-control" name="" id="dodate" aria-describedby="helpId" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    開始時間
+                                    <input type="time" class="form-control" name="" id="startime" aria-describedby="helpId" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    結束時間
+                                    <input type="time" class="form-control" name="" id="endtime" aria-describedby="helpId" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                                標記顏色
+                                <input type="color" name="favcolor" value="#ff0000" Id="color">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div id="map" class="mapstyle" style="width:450px;height:300px">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" style="width:120px">關閉</button>
+                        <button type="button" class="btn btn-primary" style="width:120px" Id="save">儲存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="fixModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">新增行事曆</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            待辦事項
+                            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" Id="fixevent">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                開始日期(月份為顯示當月)
+                                <input type="date" class="form-control" name="" id="fixdodate" aria-describedby="helpId" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                開始時間
+                                <input type="time" class="form-control" name="" id="fixstartime" aria-describedby="helpId" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                結束時間
+                                <input type="time" class="form-control" name="" id="fixendtime" aria-describedby="helpId" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            標記顏色
+                            <input type="color" name="favcolor" value="#ff0000" Id="fixcolor">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div id="map" class="mapstyle" style="width:450px;height:300px">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" style="width:120px" Id="delete">刪除</button>
+                    <button type="button" class="btn btn-primary" style="width:120px" Id="save">儲存變更</button>
+                </div>
+            </div>
+            <input type="hidden" id="hidekey">
+        </div>
+    </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkg_wCootS8JRCZTQkQfMbvLjD6t1ejL4" async defer></script>
+    <script>
+        var dd = new Date();
+        /*dd.setDate(1);//設定dd的日期為一號      setDate方法指派給變數後該變數無法再getDate或getDate  
+        var week=dd.getDay();//找到當月1號是星期幾       
+        console.log(week);*/
+        var year = dd.getFullYear();
+        var month = dd.getMonth();
+
+        document.getElementById('Year').innerText = year;
+        document.getElementById('Month').innerText = EngMonth(month);
+
+
+        var newdate = new Date(document.getElementById("dodate").value);;
+
+
+        var monthschedule = { //取得Key為year+month這筆資料的當中的年、月、日
+            nyear: year,
+            nmonth: month + 1,
+            days: [] //每個月各天的行事曆項目，有好幾天，故用陣列裝
+        };
+
+        var con = window.localStorage.getItem("" + monthschedule.nyear + monthschedule.nmonth); //讀取localStorage索引為year+month的資料(因為是get(讀取)，所以只要給索引就可以找到值)
+
+        console.log(monthschedule.nyear);
+        console.log(monthschedule.nmonth);
+        addday(year, month);
+        var left = document.getElementById('left');
+        left.onclick = function () {
+            if (month == 0) {
+                year--;
+                month = 11;
+            } else {
+                month--;
+            }
+            document.getElementById('Year').innerText = year;
+            document.getElementById('Month').innerText = EngMonth(month);
+            monthschedule = { //取得Key為year+month這筆資料的當中的年、月、日
+                nyear: year,
+                nmonth: month + 1,
+                days: [] //每個月各天的行事曆項目，有好幾天，故用陣列裝
+            };
+            addday(year, month);
+        }
+
+        var right = document.getElementById('right');
+        right.onclick = function () {
+            if (month == 11) {
+                year++;
+                month = 0;
+            } else {
+                month++;
+            }
+            document.getElementById('Year').innerText = year;
+            document.getElementById('Month').innerText = EngMonth(month);
+            monthschedule = { //取得Key為year+month這筆資料的當中的年、月、日
+                nyear: year,
+                nmonth: month + 1,
+                days: [] //每個月各天的行事曆項目，有好幾天，故用陣列裝
+            };
+            addday(year, month); /*月份(month)已加，固可直接用*/
+        }
+
+
+
+
+
+        function issun(y, m) {
+            var week = new Date(y, m, 1); /*找當月第一天*/
+            while (week.getDay() != 0) { /*getDay():取得星期幾*/
+                week.setDate(week.getDate() - 1); /*getDate():取得日期*/ /*如果那個日期不是周日就-1*/
+            }
+            console.log(week);
+            return week;
+        }
+
+
+
+        function addday(y, m) {
+            var first = issun(year, month);
+            con = window.localStorage.getItem("" + monthschedule.nyear + monthschedule.nmonth);
+
+            if (con == null) {
+                var table = document.getElementById("table");
+                for (var i = 1; i <= 6; i++) {
+                    if (table.hasChildNodes()) {
+                        table.removeChild(table.firstChild);
+                    }
+                }
+                for (var d = 1; d <= 6; d++) {
+                    var row = document.createElement("tr");
+                    for (var de = 1; de <= 7; de++) {
+                        var col = document.createElement("td");
+                        col.setAttribute("data-toggle", "modal");
+                        col.setAttribute("data-target", "#exampleModal");
+                        if (first.getMonth() == m) {
+                            if (year == dd.getFullYear() && month == dd.getMonth() & first.getDate() == dd.getDate()) {
+                                col.classList.add("red");
+                            } else {
+                                col.classList.add("black");
+                            }
+                            col.innerText = first.getDate().toString();
+                            var ul = document.createElement("ul");
+
+                            ul.classList.add("list-group");
+                            ul.setAttribute("id", "D" + first.getDate()); // id會重複
+
+
+
+                            //console.log("before", col);
+                            //234234
+                            //console.log("after", col);
+                            //console.log("this is ul", ul);
+
+                            console.log("有跑if (con == null)");
+                            col.appendChild(ul);
+                            //window.localStorage.setItem("" + monthschedule.nyear + monthschedule.nmonth, JSON.stringify(monthschedule));
+                            var dailyschedule = {
+                                day: first.getDate(),
+                                items: [] //每日的行事曆
+                            };
+                            monthschedule.days.push(dailyschedule); //把內容加到該日期
+
+
+
+                        } else {
+                            col.innerText = first.getDate().toString();
+                            col.classList.add("light");
+                        }
+
+                        //var text = document.createTextNode(first.getDate().toString());
+
+
+                        first.setDate(first.getDate() + 1); /*日期+1*/ //要先將日期加入內容後才能+1，否則全部日期都會往前一天                   
+
+                        row.appendChild(col);
+                    }
+                    table.appendChild(row);
+                }
+            } else {
+                //console.log("有跑elseleslesle");
+                monthschedule = JSON.parse(con);
+                //console.log(con);
+                var table = document.getElementById("table");
+                for (var i = 1; i <= 6; i++) {
+                    if (table.hasChildNodes()) {
+                        table.removeChild(table.firstChild);
+                    }
+                }
+                for (var d = 1; d <= 6; d++) {
+                    var row = document.createElement("tr");
+                    for (var de = 1; de <= 7; de++) {
+                        var col = document.createElement("td");
+                        col.setAttribute("data-toggle", "modal");
+                        col.setAttribute("data-target", "#exampleModal");
+                        if (first.getMonth() == m) {
+                            if (year == dd.getFullYear() && month == dd.getMonth() & first.getDate() == dd.getDate()) {
+                                col.classList.add("red");
+                            } else {
+                                col.classList.add("black");
+                            }
+                            col.innerText = first.getDate().toString();
+                            var ul = document.createElement("ul");
+
+                            ul.classList.add("list-group");
+                            ul.setAttribute("id", "D" + first.getDate());
+                            var dailyschedule = monthschedule.days[first.getDate() - 1];
+                            console.log(ul);
+                            for (var item of dailyschedule.items) {
+                                console.log(item);
+                                //var ul = document.getElementById("D" + first.getDate()); //用Id找要建行事曆的那天
+                                console.log(first.getDate());
+                                console.log("ul為" + ul);
+                                var li = document.createElement("li");
+                                li.setAttribute("id", item.key);
+                                var fix = {
+                                    y: monthschedule.year,
+                                    m: monthschedule.month,
+                                    d: dailyschedule.day,
+                                    e: item.subject,
+                                    sh: item.starthour,
+                                    eh: item.endhour,
+                                    c: item.color,
+                                    k: item.key
+                                }
+                                li.setAttribute("TBY", JSON.stringify(fix));
+                                li.setAttribute("style", "background-color:" + item.color); //改變li為使用者指定顏色
+                                console.log(li);
+                                var litext = document.createTextNode(item.subject + " " + item.starthour + "~" + item.endhour); //指派li之內容給變數
+                                li.appendChild(litext); //把該變數放入li內
+                                ul.appendChild(li);
+                                col.appendChild(ul);
+                            }
+
+                        } else {
+                            col.innerText = first.getDate().toString();
+                            col.classList.add("light");
+                        }
+                        first.setDate(first.getDate() + 1); /*日期+1*/ //要先將日期加入內容後才能+1，否則全部日期都會往前一天
+                        row.appendChild(col);
+                    }
+                    table.appendChild(row);
+
+                }
+            }
+        }
+
+        function EngMonth(month) {
+            if (month == 0) {
+                return "January";
+            } else if (month == 1) {
+                return "Febuary";
+            } else if (month == 2) {
+                return "March";
+            } else if (month == 3) {
+                return "Apirl";
+            } else if (month == 4) {
+                return "May";
+            } else if (month == 5) {
+                return "June";
+            } else if (month == 6) {
+                return "July";
+            } else if (month == 7) {
+                return "August";
+            } else if (month == 8) {
+                return "September";
+            } else if (month == 9) {
+                return "October";
+            } else if (month == 10) {
+                return "Novamber";
+            } else if (month == 11) {
+                return "December";
+            }
+        }
+
+
+        function _uuid() { //為每項行事曆產生不同key值的方法
+            var d = Date.now();
+            if (typeof performance !== 'undefined' && typeof performance.now === 'function') {
+                d += performance.now(); //use high-precision timer if available
+            }
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = (d + Math.random() * 16) % 16 | 0;
+                d = Math.floor(d / 16);
+                return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+            });
+        }
+
+        /*if(a==null){
+            addday(year,month);
+            window.localStorage.setItem(""+monthschedule.nyear+monthschedule.nmonth, JSON.stringify(monthschedule));
+        }
+        else{
+            monthschedule=JSON.parse(a);
+            fixcalender(year,month)
+        }*/
+
+        /*var dailyschedule = { //取得每天的行事曆項目
+            day: dd.getDate(),
+            items: [] //每天的行事曆項目，每天可能有不只一件事，故用陣列裝
+        }*/
+
+
+        //console.log(con);
+        var save = document.getElementById("save");
+        save.onclick = function () {
+            newdate = new Date(document.getElementById("dodate").value);
+
+            var scheduleitem = {
+                key: _uuid(), //行事曆鍵值
+                starthour: document.getElementById("startime").value, //開始時間
+                endhour: document.getElementById("endtime").value, //結束時間
+                subject: document.getElementById("event").value, //行事曆名稱(主題)
+                color: document.getElementById("color").value, //使用者自訂顏色
+                locat: e.latLng
+            };
+            var dailyschedule = monthschedule.days[newdate.getDate() - 1]; //建立行事曆的日，因為是存到陣列，所以要-1
+            console.log(newdate.getDate());
+            dailyschedule.items.push(scheduleitem); //把資料push到那一天裡面
+            window.localStorage.setItem("" + monthschedule.nyear + monthschedule.nmonth, JSON.stringify(
+                monthschedule)); //將monthschedule物件轉成字串  //寫回當月的localStorage
+            var ul = document.getElementById("D" + newdate.getDate()); //用Id找要建行事曆的那天
+            console.log(ul);
+            //var li = document.createElement("li");
+            li.setAttribute("id", scheduleitem.key);
+            var fix = {
+                y: monthschedule.year,
+                m: monthschedule.month,
+                d: dailyschedule.day,
+                e: scheduleitem.subject,
+                sh: scheduleitem.starthour,
+                eh: scheduleitem.endhour,
+                c: scheduleitem.color,
+                k: scheduleitem.key
+            }
+            li.setAttribute("datasave", JSON.stringify(fix));
+
+            //li.setAttribute("data-target", "#fixModal");
+
+            li.setAttribute("style", "background-color:" + scheduleitem.color); //改變li為使用者指定顏色
+            var litext = document.createTextNode(scheduleitem.subject + " " + scheduleitem.starthour + "~" +
+                scheduleitem.endhour); //指派li之內容給變數
+            li.appendChild(litext); //把該變數放入li內   
+            console.log(li);
+            ul.appendChild(li);
+        }
+
+        $("li").click(function( event ) {
+            event.stopPropagation();
+            $('#fixModal').modal('show');
+            add(this);
+        });
+
+        function add(d) {
+            // Do something
+            var iii = JSON.parse(d.getAtribute("datasave"));
+            $("#fixevent").val(iii.e);
+            $("#fixdodate").val(iii.y.toString() + "/" + iii.m.toString() + "/" + iii.d.toString());
+            $("#fixstartime").val(iii.sh);
+            $("#fixendtime").val(iii.eh);
+            $("#fixcolor").val(iii.c);
+        };
+
+        document.getElementById("delete").onclick=function(){
+            var hidekey=document.getElementById("hidekey");
+
+            var li=document.getElementById(hidekey.value);
+            li.remove();
+
+            var dailyschedule=monthschedule.days[document.getElementById()];
+        }
+
+        var map;
+        var marker = null;
+        window.onload = function () {
+            map = new google.maps.Map(document.getElementById('map'), { /*地圖容器div*/ /*新增一個map*/
+                center: {
+                    lat: 24.7571075,
+                    lng: 120.952429
+                },
+                /*設定中心經緯度*/
+                zoom: 8 /*縮放層次*/
+            });
+
+            map.addListener('click', function (e) { /*註冊click事件*/
+                map.setCenter(e.latLng); /*e.latLng:取得滑鼠所膽的經緯度*/
+                if (marker == null) {
+                    marker = new google.maps.Marker({ /*建立標記*/
+                        position: e.latLng,
+                        map: map,
+                        title: e.latLng.toString()
+                    });
+                } else {
+                    marker.setPosition(e.latLng); /*如果標記存在，移動它*/
+                }
+            });
+        }
+        var map;
+        var marker = null;
+        window.onload = function () {
+            map = new google.maps.Map(document.getElementById('map'), { /*地圖容器div*/ /*新增一個map*/
+                center: {
+                    lat: 24.7571075,
+                    lng: 120.952429
+                },
+                /*設定中心經緯度*/
+                zoom: 15 /*縮放層次*/
+            });
+            //var marker=new google.maps.Marker({
+            //position: {lat: 24.7571075, lng: 120.952429},/*設定標籤經緯度*/
+            //map:map,  /*地圖物件*/
+            //title:'Build School在這裡'  /*顯示標籤*/
+            //});
+            /*map.addListener('click',function(e){  /*註冊click事件*/
+            /*map.setCenter(e.latLng);  /*e.latLng:取得滑鼠所膽的經緯度*/
+            //if(marker==null){  
+            //marker=new google.maps.Marker({  /*建立標記*/
+            //position:e.latLng,
+            //map:map,
+            //title:e.latLng.toString()
+            //});
+            //}
+            //else{
+            //marker.setPosition(e.latLng);  /*如果標記存在，移動它*/
+            //}
+            //});
+
+            map.addListener('click', function (e) { /*註冊click事件*/
+                map.setCenter(e.latLng); /*e.latLng:取得滑鼠所膽的經緯度*/
+                if (marker == null) {
+                    marker = new google.maps.Marker({ /*建立標記*/
+                        position: e.latLng,
+                        map: map,
+                        //icon: "http://png.icons8.com/metro/50/000000/bicycle.png",
+                        title: e.latLng.toString()
+                    });
+                } else {
+                    marker.setPosition(e.latLng); /*如果標記存在，移動它*/
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

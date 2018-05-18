@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <style>
+        .bt {
+            margin-top: 20px;
+        }
+
+        .bt button {
+            width: 60px;
+            height: 40px;
+            margin: 5px;
+            background-color: rgb(204, 204, 204);
+        }
+
+        .bt button:hover {
+            background-color: gray;
+        }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col">
+                <h1>終極密碼</h1>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col mt-3">
+                <h4>請輸入0-100的數字(請在8次以內猜完)</h4>
+                <input type="text" name="name" / style="width:40%;height:38px" Id="txtTempC">
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col mt-3">
+                <input type="text" name="name" style="width:35px;height:38px" Id="start"> 到
+                <input type="text" name="name" style="width:35px;height:38px" Id="end">
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col mt-3">
+                 還剩下
+                <input type="text" name="name" style="width:30px;height:38px" Id="num">次
+            </div>
+        </div>
+        <div class="bt">
+            <div class="row text-center">
+                <div class="col-3">
+
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-light" Name="button">1</button>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-light" Name="button">2</button>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-light" Name="button">3</button>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-3">
+
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-light" Name="button">4</button>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-light" Name="button">5</button>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-light" Name="button">6</button>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-3">
+
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-light" Name="button">7</button>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-light" Name="button">8</button>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-light" Name="button">9</button>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-3">
+
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-light" Name="button" Id="cmdClean">清除</button>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-light" Name="button">0</button>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-light" Name="button" Id="turn">輸入</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        var ans = Math.floor(Math.random() * 100) + 1;
+        var a = 0;
+        var buttons = document.getElementsByTagName("button");
+        document.getElementById("start").value = 0;
+        document.getElementById("end").value = 100;
+        for (var i = 0; i < buttons.length; i++) {
+            var button = buttons[i]; //把buttons內的某個按鈕指派給button
+            button.onclick = function () { //button按下去就把值加入txtTempC
+                var btn = event.srcElement; /*srcElement就是來源==C#的sender*/
+                document.getElementById("txtTempC").value += btn.innerText;
+            }
+        }
+        var cmdClean = document.getElementById("cmdClean");
+        cmdClean.onclick = function () {
+            document.getElementById("txtTempC").value = "";
+        }
+
+        var turn = document.getElementById("turn");
+        turn.onclick = function () {
+            while (true) {
+                a += 1;
+                if (a > 8) {
+                    alert("已猜超過8次，請重來");
+                    break;
+                }
+                if (ans == document.getElementById("txtTempC").value) {
+                    console.log(document.getElementById("txtTempC").value + "猜對了，猜了" + a + "次");
+                    alert("恭喜答對");
+                    break;
+                } else if (ans > document.getElementById("txtTempC").value) {
+                    document.getElementById("start").value = document.getElementById("txtTempC").value;
+                    console.log(document.getElementById("txtTempC").value + "-再大一點，猜了" + a + "次");
+                    document.getElementById("txtTempC").value = "";
+                    document.getElementById("num").value =8-a;
+                    break;
+                } else {
+                    document.getElementById("end").value = document.getElementById("txtTempC").value;
+                    console.log(document.getElementById("txtTempC").value + "-再小一點，猜了" + a + "次");
+                    document.getElementById("txtTempC").value = "";
+                    document.getElementById("num").value =8-a;
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

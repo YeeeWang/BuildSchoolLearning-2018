@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <style>
+        .bt {
+            margin-top: 120px;
+            margin-left: 80px;
+        }
+
+        .bt button {
+            text-align: center;
+            width: 110px;
+        }
+
+        #list {
+            font-size: 25px;
+
+        }
+    </style>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="text-align:center">猜數字遊戲</h1>
+        <div class="row">
+            <div class="bt">
+                <div class="col">
+                    <button type="button" class="btn btn-primary" style="margin-left:5px;width:85%" Id="start">開始遊戲</button>
+                    <br/>
+                    <button type="button" class="btn btn-primary mt-3" style="margin-left:5px;width:85%" Id="see">看答案</button>
+                    <br/>
+                    <div class="input-group mb-3 mt-3" style="width:90%">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">答案</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" Id="input1">
+                    </div>
+                    <h4>請輸入4個不同的數字</h4>
+                    <input type="text" name="name" style="width:90%;height:38px" Id="guess">
+                    <br/>
+                    <button type="button" class="btn btn-primary mt-3" Id="check">檢查答案</button>
+                    <button type="button" class="btn btn-primary mt-3 ml-3" Id="clean">放棄重來</button>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group" style="margin-top:40px">
+                    <label for="exampleFormControlTextarea1">
+                        <h4 style="font-weight:bold">遊戲歷程</h4>
+                    </label>
+                    <ul class="list-group" Id="list">
+
+                    </ul>
+                    <!--<input type="text" class="form-control" Id="view" style="width:600px;height:200px">-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        var i = "";
+        var ans = [];
+        var start = document.getElementById("start");
+        start.onclick = function () {
+            while (ans.length < 4) {
+                var num = Math.floor(Math.random() * 10);
+                if (ans.indexOf(num) > -1) {
+                    continue;
+                }
+                ans.push(num);
+                i += num;
+                console.log(num);
+            }
+        }
+        var see = document.getElementById("see");
+        see.onclick = function () {
+            console.log(i);
+            document.getElementById("input1").value = i;
+        }
+        var check = document.getElementById("check");
+        check.onclick = function () {
+            var guess = document.getElementById("guess").value;
+            if ((guess.length != 4)&(guess[0]==guess[1]|guess[0]==guess[2]|guess[0]==guess[3]|guess[1]==guess[2]|guess[1]==guess[3]|guess[2]==guess[3])) {
+                alert("請輸入四個不同的數字!");
+                guess = "";
+            } else {
+                var w = guess / 1000;
+                var x = (guess - (w * 1000)) / 100;
+                var y = (guess - (w * 1000) - x * (100)) / 10;
+                var z = (guess - (w * 1000) - x * (100) - (y * 10));
+                guess[w, x, y, z];
+                var a = 0;
+                var b = 0;
+                var c = 0;
+                for (var i = 0; i < 4; i++) {
+                    for (var j = 0; j < 4; j++) {
+                        if (guess[i] == ans[j] && i == j) {
+                            a++;
+                        } else if (i != j && guess[i] == ans[j]) {
+                            b++;
+                        }
+                    }
+                }
+                c++;
+                //document.getElementById("view").value+=guess+" : "+a+"A"+b+"B";
+                var list = document.getElementById("list");
+                var r2 = document.createElement("span");
+                var r1 = document.createElement("li");
+                if (a == 4) {
+                    r2.classList.add("badge", "badge-danger");
+                    //var i2 = document.createTextNode(a + "A");
+                    r1.classList.add("list-group-item");
+                    r2.innerText=a + "A";
+                    var i1 = document.createTextNode(" " + guess);  //後者須用createTextNode和appendChild，否則+=後前面的標籤顏色會被蓋過
+                    r1.appendChild(r2);
+                    r1.appendChild(i1);
+                    list.appendChild(r1);
+                    alert("恭喜答對");
+                } else {
+                    r2.classList.add("badge", "badge-primary"); //在span加入一個Class
+                    var i2 = document.createTextNode(a + "A" + b + "B");
+                    r1.classList.add("list-group-item");
+                    r2.appendChild(i2);
+                    var i1 = document.createTextNode(" " + guess);
+                    r1.appendChild(r2);
+                    r1.appendChild(i1);
+                    list.appendChild(r1);
+                }
+            }
+
+        }
+        var clean = document.getElementById("clean");
+        clean.onclick = function () {
+            location.reload(); //重新整理
+            /*ans = [];
+            i = "";
+            document.getElementById("input1").value ="";
+            document.getElementById("guess").value = "";
+            document.getElementByTagName("li").value= "";
+            document.getElementByTagName("span").value= "";*/
+        }
+    </script>
+</body>
+
+</html>

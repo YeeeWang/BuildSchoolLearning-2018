@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <style>
+        .radio {
+            margin-left: 4cm;
+        }
+
+        .bt {
+            margin-top: 20px;
+        }
+
+        .bt button {
+            width: 100px;
+            height: 40px;
+            margin: 5px;
+            background-color: rgb(204, 204, 204);
+        }
+
+        .bt button:hover {
+            background-color: gray;
+        }
+
+        .display {
+            margin-top: 20px;
+        }
+    </style>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="radio">
+                <div class="col text-left">
+                    請選擇轉換方式:
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option1" id="unitCF">
+                        <label class="form-check-label" for="inlineRadio1">攝氏轉換為華氏</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option2" id="unitFC">
+                        <label class="form-check-label" for="inlineRadio2">華氏轉換為攝氏</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="col text-center">
+                <div class="bt">
+                    <div class="row">
+                        <div class="col-2">
+
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-light" Name="button">1</button>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-light" Name="button">2</button>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-light" Name="button">3</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-light" Name="button">4</button>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-light" Name="button">5</button>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-light" Name="button">6</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-light" Name="button">7</button>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-light" Name="button">8</button>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-light" Name="button">9</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-light" Name="button">0</button>
+                        </div>
+                        <div class="col-2">
+                            <button type="button" class="btn btn-light" Name="button">.</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="col text-left">
+                <div class="display">
+                    <h4 style="margin-left:65px">請輸入欲轉換之溫度</h4>
+                    <input type="text" name="name" / style="width:60%;height:38px;margin-left:65px" Id="txtTempC">
+                    <button type="button" class="btn btn-primary ml-5" Id="turn">轉換</button>
+                    <button type="button" class="btn btn-danger ml-3" Id="cmdClean">清除</button>
+                    <div class="input-group mb-3 mt-5" style="width:80%;margin-left:65px">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">結果</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" Id="result">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        //var nodes=document.getElementsByTagName("button");
+        /*var nodes = document.querySelectorAll("button");
+        for(var i=0;i<nodes.length;i++){
+            console.log(nodes[i].innerText);
+        }*/
+
+        var buttons = document.getElementsByTagName("button");
+
+        for (var i = 0; i < buttons.length; i++) {
+            var button = buttons[i];//把buttons內的某個按鈕指派給button
+            button.onclick = function () {//button按下去就把值加入txtTempC
+                var btn = event.srcElement; /*srcElement就是來源==C#的sender*/
+                document.getElementById("txtTempC").value += btn.innerText;
+            }
+        }
+
+        var optCF = document.getElementById("unitCF");//一個檔案只能設一個Id
+        var optFC = document.getElementById("unitFC");
+        console.log(optCF.checked);//console.log:顯示在後台-找出已選擇的項目
+        console.log(optFC.checked);
+
+        var cmdClean = document.getElementById("cmdClean");
+        cmdClean.onclick = function () {
+            document.getElementById("txtTempC").value = "";
+        }
+
+        var turn = document.getElementById("turn");
+        turn.onclick = function () {
+             if (optCF.checked) {
+                 document.getElementById("result").value = (document.getElementById("txtTempC").value * 1.8) + 32
+             } else if (optFC.checked) {
+                 document.getElementById("result").value = (document.getElementById("txtTempC").value - 32) / 1.8
+             }
+        }
+    </script>
+</body>
+
+</html>

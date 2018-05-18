@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container" style="margin-left:12cm">
+        <div class="row" style="width:15cm">
+            <div class="col text-center">
+                <h3>貸款計算</h3>
+            </div>
+        </div>
+        <div class="row" style="width:15cm">
+            <div class="col text-center">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">年利率(%)</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" Id="yearrate">
+                    <button type="button" class="btn btn-primary ml-3" Id="count">計算</button>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="width:15cm">
+            <div class="col text-center">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">貸款年期(年)</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" Id="lendyear">
+                </div>
+            </div>
+        </div>
+        <div class="row" style="width:15cm">
+            <div class="col text-center">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">貸款本金</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" Id="lendmoney">
+                </div>
+            </div>
+        </div>
+        <div class="row" style="width:15cm">
+            <div class="col text-center">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">平均每月應負金額</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" Id="paymonth">
+                </div>
+            </div>
+        </div>
+        <div class="row" style="width:15cm">
+            <div class="col text-center">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">每月利息</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" Id="paymonthrate">
+                </div>
+            </div>
+        </div>
+        <div class="row" style="width:15cm">
+            <div class="col text-center">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">總金額</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" Id="paytotal">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script>
+        var count = document.getElementById("count");
+        count.onclick = function () {
+            var monthrate = document.getElementById("yearrate").value / 100 / 12;
+            var lendmonth = document.getElementById("lendyear").value * 12;
+            var lendmoney = document.getElementById("lendmoney").value;
+            var bank = function (monthrate, lendmonth, lendmoney) {
+                console.log(monthrate);
+                console.log(lendmonth);
+                console.log(lendmoney);
+                var rate = (Math.pow((1 + monthrate), lendmonth) * monthrate) / (Math.pow((1 + monthrate),
+                    lendmonth) - 1);
+                console.log(rate);
+                this.getpaymonth = function () {
+                    return Math.floor(rate * lendmoney);
+                }
+                this.getpaymonthrate = function () {
+                    return Math.floor(rate * lendmoney - (lendmoney / lendmonth));
+                }
+                this.getpaytotal = function () {
+                    return Math.floor(rate * lendmoney * lendmonth);
+                }
+            }
+            var result1 = new bank(monthrate, lendmonth, lendmoney);
+            document.getElementById("paymonth").value = result1.getpaymonth();
+            document.getElementById("paymonthrate").value = result1.getpaymonthrate();
+            document.getElementById("paytotal").value = result1.getpaytotal();
+
+            /*var rate=(Math.Pow((1+monthrate),lendmonth)*monthrate)/(Math.pow((1+monthrate),lendmonth)-1);        
+            document.getElementById("paymonth").value=lendmoney*rate;
+            document.getElementById("paymonthrate").value=document.getElementById("paymonth").value-(lendmoney/12);
+            document.getElementById("paytotal").value=document.getElementById("paymonth").value*lendmonth;*/
+        }
+    </script>
+</body>
+
+</html>

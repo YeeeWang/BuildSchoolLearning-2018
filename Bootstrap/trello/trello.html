@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        .back {
+            background-color: rgb(230, 228, 228);
+        }
+
+        .label-1 button {
+            background-color: rgb(199, 193, 193);
+            border-color: rgb(199, 193, 193);
+            color: black;
+            height: 32px;
+            width: 50px;
+            padding: 0.4px;
+        }
+
+        .label button {
+            background-color: rgb(199, 193, 193);
+            border-color: rgb(199, 193, 193);
+            color: black;
+            padding: 0.3px;
+            width: 140px;
+            height: 30px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .label button:hover {
+            background-color: gray;
+            border-color: gray;
+        }
+
+        .CB {
+            background-color: rgb(230, 228, 228);
+            height: 38px;
+            text-decoration: underline;
+
+        }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body style="font-family:微軟正黑體">
+    <div class="row-4">
+        <div class="col-md">
+            <p>這是可愛的Build School作業，
+                <br/>請同學一定要完成</p>
+        </div>
+        <div class="col-md">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+                新增一張卡片
+            </button>
+
+            <!-- Modal -->
+            <div class="back">
+                <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content" style="width:45em">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modelTitleId">
+                                    <img src="C:\HTML1\bootstrap\trello\trello\trellopic.png" style="color:rgb(163, 162, 162)">#9487</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <h4>Bootstrap作業練習</h4>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md">
+                                        <div style="color:rgb(163, 162, 162);background-color:white">in list
+                                            <a href="#" style="color:rgb(163, 162, 162);background-color:white; text-decoration:underline">練習中/作業中</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <h6 style="color:rgb(163, 162, 162)">Members</h6>
+                                                <h4>
+                                                    <span class="badge badge-secondary" style="color:white;font-size:16px">+</span>
+                                                </h4>
+                                            </div>
+                                            <div class="col-5 ml-3">
+                                                <h6 style="color:rgb(163, 162, 162)">Labels</h6>
+                                                <h4>
+                                                    <span class="badge badge-warning" style="color:white;font-size:16px">HTML/CSS</span>
+                                                    <span class="badge badge-secondary" style="color:white;font-size:16px">+</span>
+                                                </h4>
+                                            </div>
+                                            <div class="col-4">
+                                                <h6 style="color:rgb(163, 162, 162)">Due Date</h6>
+                                                <div class="btn-group-toggle" data-toggle="buttons">
+                                                    <div class="btn-group" data-toggle="buttons">
+                                                        <div class="CB"> 
+                                                            <div class="btn-group" data-toggle="buttons">
+                                                                <label class="btn btn-light" style="background-color:rgb(209, 209, 209)">
+                                                                    <input type="checkbox" name="checkbox" id="checkbox" autocomplete="off" style="width:22px;height:22px;margin:2px">
+                                                                    <span style="text-decoration:none;margin-top:1px">Mar 28 at 5:30 PM</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="label-1">
+                                            <div class="row">
+                                                <div class="col" width="50px">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1">
+                                                            <h6 style="font-weight:bold">描述</h6>
+                                                        </label>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                    </div>
+                                                    <button type="button" class="btn btn-secondary">儲存
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                                                        <br/>
+                                                        <br/>
+                                                        <div class="form-group">
+                                                            <label for="exampleFormControlTextarea1">
+                                                                <h6 style="font-weight:bold">新增評論</h6>
+                                                            </label>
+                                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                        </div>
+                                                        <button type="button" class="btn btn-secondary">儲存</button>
+                                                        <br/>
+                                                        <br/>
+                                                        <div class="row">
+                                                            <div class="col-8">
+                                                                <h6>活動</h6>
+                                                                <h6>
+                                                                    <b>James Tsia</b>再次編輯了這張相片</h6>
+                                                                <h6>
+                                                                    <b>James Tsia</b>再次編輯了這張相片</h6>
+                                                                <h6>
+                                                                    <b>James Tsia</b>再次編輯了這張相片</h6>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <a href="#" style="color:rgb(163, 162, 162);background-color:white; text-decoration:underline">隱藏細節</a>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="label">
+                                        <div class="col-5 ml-5">
+                                            <h6 style="font-weight:bold">新增</h6>
+                                            <button type="button" class="btn btn-primary">成員</button>
+                                            <br/>
+                                            <button type="button" class="btn btn-primary mt-1">標籤</button>
+                                            <br/>
+                                            <button type="button" class="btn btn-primary mt-1">代辦清單</button>
+                                            <br/>
+                                            <button type="button" class="btn btn-primary mt-1">到期日</button>
+                                            <br/>
+                                            <button type="button" class="btn btn-primary mt-1">附件</button>
+                                            <br/>
+                                            <br/>
+                                            <h6 style="font-weight:bold;width:70px">強化功能</h6>
+                                            <button type="button" class="btn btn-primary">Google雲端硬碟</button>
+                                            <br/>
+                                            <br/>
+                                            <h6 style="font-weight:bold">新增</h6>
+                                            <button type="button" class="btn btn-primary mt-1">移動</button>
+                                            <br/>
+                                            <button type="button" class="btn btn-primary mt-1">複製</button>
+                                            <br/>
+                                            <button type="button" class="btn btn-primary mt-1">立即觀看</button>
+                                            <hr/>
+                                            <button type="button" class="btn btn-primary">封裝</button>
+                                            <br/>
+                                            <br/>
+                                            <div>
+                                                <h6 style="width:100px">
+                                                    <a href="#" style="color:rgb(163, 162, 162);background-color:white; text-decoration:underline">分享和更多...</a>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
