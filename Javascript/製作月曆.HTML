@@ -307,9 +307,6 @@
         };
 
         var con = window.localStorage.getItem("" + monthschedule.nyear + monthschedule.nmonth); //讀取localStorage索引為year+month的資料(因為是get(讀取)，所以只要給索引就可以找到值)
-
-        console.log(monthschedule.nyear);
-        console.log(monthschedule.nmonth);
         addday(year, month);
         var left = document.getElementById('left');
         left.onclick = function () {
@@ -321,11 +318,6 @@
             }
             document.getElementById('Year').innerText = year;
             document.getElementById('Month').innerText = EngMonth(month);
-            monthschedule = { //取得Key為year+month這筆資料的當中的年、月、日
-                nyear: year,
-                nmonth: month + 1,
-                days: [] //每個月各天的行事曆項目，有好幾天，故用陣列裝
-            };
             addday(year, month);
         }
 
@@ -339,11 +331,6 @@
             }
             document.getElementById('Year').innerText = year;
             document.getElementById('Month').innerText = EngMonth(month);
-            monthschedule = { //取得Key為year+month這筆資料的當中的年、月、日
-                nyear: year,
-                nmonth: month + 1,
-                days: [] //每個月各天的行事曆項目，有好幾天，故用陣列裝
-            };
             addday(year, month); /*月份(month)已加，固可直接用*/
         }
 
@@ -356,7 +343,6 @@
             while (week.getDay() != 0) { /*getDay():取得星期幾*/
                 week.setDate(week.getDate() - 1); /*getDate():取得日期*/ /*如果那個日期不是周日就-1*/
             }
-            console.log(week);
             return week;
         }
 
@@ -377,8 +363,6 @@
                     var row = document.createElement("tr");
                     for (var de = 1; de <= 7; de++) {
                         var col = document.createElement("td");
-                        /*col.setAttribute("data-toggle", "modal");
-                        col.setAttribute("data-target", "#exampleModal");*/
                         if (first.getMonth() == m) {
                             if (year == dd.getFullYear() && month == dd.getMonth() & first.getDate() == dd.getDate()) {
                                 col.classList.add("red");
@@ -389,16 +373,6 @@
                             var ul = document.createElement("ul");
 
                             ul.classList.add("list-group");
-                            ul.setAttribute("id", "D" + first.getDate()); // id會重複
-
-
-
-                            //console.log("before", col);
-                            //234234
-                            //console.log("after", col);
-                            //console.log("this is ul", ul);
-
-                            console.log("有跑if (con == null)");
                             col.appendChild(ul);
                             //window.localStorage.setItem("" + monthschedule.nyear + monthschedule.nmonth, JSON.stringify(monthschedule));
                             var dailyschedule = {
@@ -413,10 +387,6 @@
                             col.innerText = first.getDate().toString();
                             col.classList.add("light");
                         }
-
-                        //var text = document.createTextNode(first.getDate().toString());
-
-
                         first.setDate(first.getDate() + 1); /*日期+1*/ //要先將日期加入內容後才能+1，否則全部日期都會往前一天                   
 
                         row.appendChild(col);
@@ -518,175 +488,7 @@
                 return "December";
             }
         }
-
-
-        function _uuid() { //為每項行事曆產生不同key值的方法
-            var d = Date.now();
-            if (typeof performance !== 'undefined' && typeof performance.now === 'function') {
-                d += performance.now(); //use high-precision timer if available
-            }
-            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-                var r = (d + Math.random() * 16) % 16 | 0;
-                d = Math.floor(d / 16);
-                return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-            });
-        }
-
-        /*if(a==null){
-            addday(year,month);
-            window.localStorage.setItem(""+monthschedule.nyear+monthschedule.nmonth, JSON.stringify(monthschedule));
-        }
-        else{
-            monthschedule=JSON.parse(a);
-            fixcalender(year,month)
-        }*/
-
-        /*var dailyschedule = { //取得每天的行事曆項目
-            day: dd.getDate(),
-            items: [] //每天的行事曆項目，每天可能有不只一件事，故用陣列裝
-        }*/
-
-
-        //console.log(con);
-        var save = document.getElementById("save");
-        save.onclick = function () {
-            newdate = new Date(document.getElementById("dodate").value);
-
-            var scheduleitem = {
-                key: _uuid(), //行事曆鍵值
-                starthour: document.getElementById("startime").value, //開始時間
-                endhour: document.getElementById("endtime").value, //結束時間
-                subject: document.getElementById("event").value, //行事曆名稱(主題)
-                color: document.getElementById("color").value, //使用者自訂顏色
-                locat: e.latLng
-            };
-            var dailyschedule = monthschedule.days[newdate.getDate() - 1]; //建立行事曆的日，因為是存到陣列，所以要-1
-            console.log(newdate.getDate());
-            dailyschedule.items.push(scheduleitem); //把資料push到那一天裡面
-            window.localStorage.setItem("" + monthschedule.nyear + monthschedule.nmonth, JSON.stringify(
-                monthschedule)); //將monthschedule物件轉成字串  //寫回當月的localStorage
-            var ul = document.getElementById("D" + newdate.getDate()); //用Id找要建行事曆的那天
-            console.log(ul);
-            //var li = document.createElement("li");
-            li.setAttribute("id", scheduleitem.key);
-            var fix = {
-                y: monthschedule.year,
-                m: monthschedule.month,
-                d: dailyschedule.day,
-                e: scheduleitem.subject,
-                sh: scheduleitem.starthour,
-                eh: scheduleitem.endhour,
-                c: scheduleitem.color,
-                k: scheduleitem.key
-            }
-            li.setAttribute("datasave", JSON.stringify(fix));
-
-            //li.setAttribute("data-target", "#fixModal");
-
-            li.setAttribute("style", "background-color:" + scheduleitem.color); //改變li為使用者指定顏色
-            var litext = document.createTextNode(scheduleitem.subject + " " + scheduleitem.starthour + "~" +
-                scheduleitem.endhour); //指派li之內容給變數
-            li.appendChild(litext); //把該變數放入li內   
-            console.log(li);
-            ul.appendChild(li);
-        }
-
-        $("li").click(function( event ) {
-            event.stopPropagation();
-            $('#fixModal').modal('show');
-            add(this);
-        });
-
-        function add(d) {
-            // Do something
-            var iii = JSON.parse(d.getAtribute("datasave"));
-            $("#fixevent").val(iii.e);
-            $("#fixdodate").val(iii.y.toString() + "/" + iii.m.toString() + "/" + iii.d.toString());
-            $("#fixstartime").val(iii.sh);
-            $("#fixendtime").val(iii.eh);
-            $("#fixcolor").val(iii.c);
-        };
-
-        document.getElementById("delete").onclick=function(){
-            var hidekey=document.getElementById("hidekey");
-
-            var li=document.getElementById(hidekey.value);
-            li.remove();
-
-            var dailyschedule=monthschedule.days[document.getElementById()];
-        }
-
-        var map;
-        var marker = null;
-        window.onload = function () {
-            map = new google.maps.Map(document.getElementById('map'), { /*地圖容器div*/ /*新增一個map*/
-                center: {
-                    lat: 24.7571075,
-                    lng: 120.952429
-                },
-                /*設定中心經緯度*/
-                zoom: 8 /*縮放層次*/
-            });
-
-            map.addListener('click', function (e) { /*註冊click事件*/
-                map.setCenter(e.latLng); /*e.latLng:取得滑鼠所膽的經緯度*/
-                if (marker == null) {
-                    marker = new google.maps.Marker({ /*建立標記*/
-                        position: e.latLng,
-                        map: map,
-                        title: e.latLng.toString()
-                    });
-                } else {
-                    marker.setPosition(e.latLng); /*如果標記存在，移動它*/
-                }
-            });
-        }
-        var map;
-        var marker = null;
-        window.onload = function () {
-            map = new google.maps.Map(document.getElementById('map'), { /*地圖容器div*/ /*新增一個map*/
-                center: {
-                    lat: 24.7571075,
-                    lng: 120.952429
-                },
-                /*設定中心經緯度*/
-                zoom: 15 /*縮放層次*/
-            });
-            //var marker=new google.maps.Marker({
-            //position: {lat: 24.7571075, lng: 120.952429},/*設定標籤經緯度*/
-            //map:map,  /*地圖物件*/
-            //title:'Build School在這裡'  /*顯示標籤*/
-            //});
-            /*map.addListener('click',function(e){  /*註冊click事件*/
-            /*map.setCenter(e.latLng);  /*e.latLng:取得滑鼠所膽的經緯度*/
-            //if(marker==null){  
-            //marker=new google.maps.Marker({  /*建立標記*/
-            //position:e.latLng,
-            //map:map,
-            //title:e.latLng.toString()
-            //});
-            //}
-            //else{
-            //marker.setPosition(e.latLng);  /*如果標記存在，移動它*/
-            //}
-            //});
-
-            map.addListener('click', function (e) { /*註冊click事件*/
-                map.setCenter(e.latLng); /*e.latLng:取得滑鼠所膽的經緯度*/
-                if (marker == null) {
-                    marker = new google.maps.Marker({ /*建立標記*/
-                        position: e.latLng,
-                        map: map,
-                        //icon: "http://png.icons8.com/metro/50/000000/bicycle.png",
-                        title: e.latLng.toString()
-                    });
-                } else {
-                    marker.setPosition(e.latLng); /*如果標記存在，移動它*/
-                }
-            });
-        }
     </script>
-
 </body>
 
 </html>
