@@ -11,22 +11,28 @@
             height: 500px;
             float: left;
         }
-
-        .directionstyle {
-            width: 300px;
-            height: 500px;
-            float: left;
+        
+        .table{
+            margin-left: 800px;
         }
+        
         table{
             border:0.01em solid #000000;
             border-spacing: 0px;
-            width: 50%;
         }
+
+        th{
+            border: 0.01em solid #000000;
+            border-spacing: 0px;
+            padding: 6px; 
+        }
+
         td{
             border: 0.01em solid #000000;
             border-spacing: 0px;
             padding: 6px; 
-            width: 20;
+            width: 120px;
+            height: 30px;
             word-break: break-all;
         }
     </style>
@@ -50,35 +56,40 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-5">
             <div id="map" class="mapstyle"></div>
-            <div id="direction" class="directionstyle"></div>
-        </div><br/>
-        <div class="col-4 text-left">
+        </div>
+        <div class="col-5 table">
             <table class="Dis">
             <tr>
+                <th>運輸方式</td>
+                <th>距離</th>
+                <th>時間</th>
+                <th>價格</th>
+            </tr>    
+            <tr>
                 <td>開車</td>
-                <td>距離:<span Id="DDist"></span></td>
-                <td>時間:<span Id="DTime"></span></td>
-                <td>價格:<span Id="DPrice"></span></td>
+                <td><span Id="DDist"></span></td>
+                <td><span Id="DTime"></span></td>
+                <td><span Id="DPrice"></span></td>
             </tr>
             <tr class="Dis">
                 <td>大眾運輸</td>
-                <td>距離:<span Id="TDist"></span></td>
-                <td>時間:<span Id="TTime"></span></td>
-                <td>價格:<span Id="TPrice"></span></td>
+                <td><span Id="TDist"></span></td>
+                <td><span Id="TTime"></span></td>
+                <td><span Id="TPrice"></span></td>
             </tr>
             <tr class="Dis">
                 <td>走路</td>
-                <td>距離:<span Id="WDist"></span></td>
-                <td>時間:<span Id="WTime"></span></td>
-                <td>價格:<span Id="WPrice"></span></td>
+                <td><span Id="WDist"></span></td>
+                <td><span Id="WTime"></span></td>
+                <td><span Id="WPrice"></span></td>
             </tr>
             <tr class="Dis"></tr>
                 <td>計程車</td>
-                <td>距離:<span Id="TADist"></span></td>
-                <td>時間:<span Id="TATime"></span></td>
-                <td>價格:<span Id="TAPrice"></span></td>
+                <td><span Id="TADist"></span></td>
+                <td><span Id="TATime"></span></td>
+                <td><span Id="TAPrice"></span></td>
             </tr>
             </table>
         </div>
