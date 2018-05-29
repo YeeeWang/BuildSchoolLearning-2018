@@ -186,15 +186,11 @@
                 lat: routes[0].lat,
                 lng: routes[0].lng
             }
-            console.log(start);
+
             var end = {
                 lat: routes[routes.length - 1].lat, //陣列索引從0開始算，但陣列長度是從1開始算，故陣列長度-1就是陣列索引的最後一個
                 lng: routes[routes.length - 1].lng
             };
-            console.log("456");
-
-            console.log("789");
-            console.log("Hi");
             //directionsDisplay.setPanel(document.getElementById('direction'));
             directionsService.route({
                 origin: start,
@@ -203,8 +199,7 @@
                 optimizeWaypoints: true,
                 travelMode: 'DRIVING'
             }, function (response, status) {
-                console.log(response);
-                console.log(status);
+
                 if (status === 'OK') {
                     directionsDisplay.setDirections(response);
 
