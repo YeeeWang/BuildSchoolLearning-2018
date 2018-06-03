@@ -471,35 +471,35 @@
         function rule(Steps) {
             if (Steps == 2 || Steps == 8 || Steps == 13 || Steps == 19 || Steps == 24 ||
                 Steps == 30) {
-                lastpoint += 5 * h;
+                lastpoint += 5 * (h/8);
                 judgeover(lastpoint);
             }
             if (Steps == 4 || Steps == 9 || Steps == 15 || Steps == 21 || Steps == 28) {
-                lastpoint += 10 * g;
+                lastpoint += 10 * (g/7);
                 judgeover(lastpoint);
             }
             if (Steps == 1 || Steps == 7 || Steps == 14 || Steps == 20 || Steps == 25) {
-                lastpoint += 15 * f;
+                lastpoint += 15 * (f/6);
                 judgeover(lastpoint);
             }
             if (Steps == 6 || Steps == 17 || Steps == 23 || Steps == 32) {
-                lastpoint += 20 * e;
+                lastpoint += 20 * (e/5);
                 judgeover(lastpoint);
             }
             if (Steps == 3 || Steps == 11 || Steps == 18 || Steps == 27) {
-                lastpoint += 30 * d;
+                lastpoint += 30 * (d/4);
                 judgeover(lastpoint);
             }
             if (Steps == 12 || Steps == 22 || Steps == 31) {
-                lastpoint += 40 * c;
+                lastpoint += 40 * (c/3);
                 judgeover(lastpoint);
             }
             if (Steps == 5 || Steps == 16 || Steps == 26) {
-                lastpoint += 50 * b;
+                lastpoint += 50 * (b/2);
                 judgeover(lastpoint);
             }
             if (Steps == 10 || Steps == 29) {
-                lastpoint += 100 * a;
+                lastpoint += 100 * (a/1);
                 judgeover(lastpoint);
             }
         }
