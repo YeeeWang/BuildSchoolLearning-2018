@@ -12,13 +12,13 @@
             font-size: 40px;
             color: white;
             background-color: rgb(39, 3, 3);
-            
+
         }
 
-        .text{
+        .text {
             text-align: center;
         }
- 
+
         #go {
             height: 30px;
             width: 100%;
@@ -505,62 +505,66 @@
         }
 
         $(function () {
-            if (lastpoint > 0) {
-                $("#lastpoint").text(lastpoint);
-                $("#b1").click(function () {
+            $("#lastpoint").text(lastpoint);
+            $("#b1").click(function () {
+                if (lastpoint >= 8) {
                     a += 1;
                     lastpoint -= 8;
-
-                    judge(lastpoint,8);
-                })
-                $("#b2").click(function () {
+                    judge(lastpoint, 8);
+                }
+            })
+            $("#b2").click(function () {
+                if (lastpoint >= 7) {
                     b += 1;
                     lastpoint -= 7;
-
-                    judge(lastpoint,7);
-                })
-                $("#b3").click(function () {
+                    judge(lastpoint, 7);
+                }
+            })
+            $("#b3").click(function () {
+                if (lastpoint >= 6) {
                     c += 1;
                     lastpoint -= 6;
-
-                    judge(lastpoint,6);
-                })
-                $("#b4").click(function () {
+                    judge(lastpoint, 6);
+                }
+            })
+            $("#b4").click(function () {
+                if (lastpoint >= 5) {
                     d += 1;
                     lastpoint -= 5;
-
-                    judge(lastpoint,5);
-                })
-                $("#b5").click(function () {
+                    judge(lastpoint, 5);
+                }
+            })
+            $("#b5").click(function () {
+                if (lastpoint >= 4) {
                     e += 1;
                     lastpoint -= 4;
-
-                    judge(lastpoint,4);
-                })
-                $("#b6").click(function () {
+                    judge(lastpoint, 4);
+                }
+            })
+            $("#b6").click(function () {
+                if (lastpoint >= 3) {
                     f += 1;
                     lastpoint -= 3;
-
-                    judge(lastpoint,3);
-                })
-                $("#b7").click(function () {
+                    judge(lastpoint, 3);
+                }
+            })
+            $("#b7").click(function () {
+                if (lastpoint >= 2) {
                     g += 1;
                     lastpoint -= 2;
-
-                    judge(lastpoint,2);
-                })
-                $("#b8").click(function () {
+                    judge(lastpoint, 2);
+                }
+            })
+            $("#b8").click(function () {
+                if (lastpoint >= 1) {
                     h += 1;
                     lastpoint -= 1;
-                    judge(lastpoint,1);
-                })
-            } else {
-                $("#lastpoint").text("0");
-            }
+                    judge(lastpoint, 1);
+                }
+            })
         })
 
-        function judge(lastpoint,addpoint) {
-            if (lastpoint >= 0) {
+        function judge(lastpoint) {
                 $("#lastpoint").text(lastpoint);
                 $("#t1").val(a);
                 $("#t2").val(b);
@@ -570,10 +574,7 @@
                 $("#t6").val(f);
                 $("#t7").val(g);
                 $("#t8").val(h);
-            } else {      
-                lastpoint+=addpoint;
-                $("#lastpoint").text(lastpoint);
-            }
+            
         }
 
         function judgeover(lastpoint) {
