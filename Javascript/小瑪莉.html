@@ -511,55 +511,55 @@
                     a += 1;
                     lastpoint -= 8;
 
-                    judge(lastpoint);
+                    judge(lastpoint,8);
                 })
                 $("#b2").click(function () {
                     b += 1;
                     lastpoint -= 7;
 
-                    judge(lastpoint);
+                    judge(lastpoint,7);
                 })
                 $("#b3").click(function () {
                     c += 1;
                     lastpoint -= 6;
 
-                    judge(lastpoint);
+                    judge(lastpoint,6);
                 })
                 $("#b4").click(function () {
                     d += 1;
                     lastpoint -= 5;
 
-                    judge(lastpoint);
+                    judge(lastpoint,5);
                 })
                 $("#b5").click(function () {
                     e += 1;
                     lastpoint -= 4;
 
-                    judge(lastpoint);
+                    judge(lastpoint,4);
                 })
                 $("#b6").click(function () {
                     f += 1;
                     lastpoint -= 3;
 
-                    judge(lastpoint);
+                    judge(lastpoint,3);
                 })
                 $("#b7").click(function () {
                     g += 1;
                     lastpoint -= 2;
 
-                    judge(lastpoint);
+                    judge(lastpoint,2);
                 })
                 $("#b8").click(function () {
                     h += 1;
                     lastpoint -= 1;
-                    judge(lastpoint);
+                    judge(lastpoint,1);
                 })
             } else {
                 $("#lastpoint").text("0");
             }
         })
 
-        function judge(lastpoint) {
+        function judge(lastpoint,addpoint) {
             if (lastpoint >= 0) {
                 $("#lastpoint").text(lastpoint);
                 $("#t1").val(a);
@@ -572,6 +572,7 @@
                 $("#t8").val(h);
             } else {
                 $("#lastpoint").text("0");
+                lastpoint+=addpoint;
             }
         }
 
