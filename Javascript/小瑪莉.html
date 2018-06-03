@@ -408,7 +408,7 @@
         var currentBrick = 0; //用來跑紅框(跑到第幾個)
         var forwardSteps = 0; //跑幾格
 
-        var lastpoint = 10;
+        var lastpoint = 50;
         var a = 0;
         var b = 0;
         var c = 0;
@@ -508,44 +508,44 @@
             if (lastpoint > 0) {
                 $("#lastpoint").text(lastpoint);
                 $("#b1").click(function () {
-                    a += 1;
-                    lastpoint -= 1;
+                    a += 8;
+                    lastpoint -= 8;
 
                     judge(lastpoint);
                 })
                 $("#b2").click(function () {
-                    b += 1;
-                    lastpoint -= 1;
+                    b += 7;
+                    lastpoint -= 7;
 
                     judge(lastpoint);
                 })
                 $("#b3").click(function () {
-                    c += 1;
-                    lastpoint -= 1;
+                    c += 6;
+                    lastpoint -= 6;
 
                     judge(lastpoint);
                 })
                 $("#b4").click(function () {
-                    d += 1;
-                    lastpoint -= 1;
+                    d += 5;
+                    lastpoint -= 5;
 
                     judge(lastpoint);
                 })
                 $("#b5").click(function () {
-                    e += 1;
-                    lastpoint -= 1;
+                    e += 4;
+                    lastpoint -= 4;
 
                     judge(lastpoint);
                 })
                 $("#b6").click(function () {
-                    f += 1;
-                    lastpoint -= 1;
+                    f += 3;
+                    lastpoint -= 3;
 
                     judge(lastpoint);
                 })
                 $("#b7").click(function () {
-                    g += 1;
-                    lastpoint -= 1;
+                    g += 2;
+                    lastpoint -= 2;
 
                     judge(lastpoint);
                 })
