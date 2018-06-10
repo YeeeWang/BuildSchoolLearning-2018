@@ -50,7 +50,7 @@
         <div class="row text-center">
             <div class="col mt-3">
                  還剩下
-                <span Id="num">次</span>
+                <span Id="num"></span>次
             </div>
         </div>
         <div class="bt">
@@ -124,8 +124,8 @@
         var ans = Math.floor(Math.random() * 100) + 1;
         var a = 0;
         var buttons = document.getElementsByTagName("button");
-        document.getElementById("start").value = 0;
-        document.getElementById("end").value = 100;
+        document.getElementById("start").innerHTML = 0;
+        document.getElementById("end").innerHTML = 100;
         for (var i = 0; i < buttons.length; i++) {
             var button = buttons[i]; //把buttons內的某個按鈕指派給button
             button.onclick = function () { //button按下去就把值加入txtTempC
@@ -150,14 +150,14 @@
                     alert("恭喜答對");
                     break;
                 } else if (ans > document.getElementById("txtTempC").value) {
-                    document.getElementById("start").value = document.getElementById("txtTempC").value;
+                    document.getElementById("start").innerHTML = document.getElementById("txtTempC").value;
                     document.getElementById("txtTempC").value = "";
-                    document.getElementById("num").value =8-a;
+                    document.getElementById("num").innerHTML =8-a;
                     break;
                 } else {
-                    document.getElementById("end").value = document.getElementById("txtTempC").value;
+                    document.getElementById("end").innerHTML = document.getElementById("txtTempC").value;
                     document.getElementById("txtTempC").value = "";
-                    document.getElementById("num").value =8-a;
+                    document.getElementById("num").innerHTML =8-a;
                     break;
                 }
             }
