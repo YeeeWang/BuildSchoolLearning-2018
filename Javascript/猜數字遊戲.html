@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <style>
+        #body{
+            font-family:"微軟正黑體";
+        }
         .bt {
             margin-top: 120px;
             margin-left: 80px;
@@ -16,11 +19,39 @@
         .bt button {
             text-align: center;
             width: 110px;
+            height: 38px;
         }
 
         #list {
             font-size: 25px;
 
+        }
+
+        #start{
+            background:linear-gradient(rgb(123, 123, 151),rgb(45, 46, 70)) no-repeat;
+            border-color: rgb(45, 46, 70);
+        }
+
+        #see{
+            background:linear-gradient(rgb(123, 123, 151),rgb(45, 46, 70)) no-repeat;
+            border-color: rgb(45, 46, 70);
+        }
+        #check{
+            background:linear-gradient(rgb(144, 228, 155),rgb(6, 122, 31)) no-repeat;
+            border-color: rgb(6, 122, 31);
+        }
+
+        #clean{
+            background:linear-gradient(rgb(240, 178, 178),rgb(197, 8, 8)) no-repeat;
+            border-color: rgb(197, 8, 8);
+        }
+
+        .badge-primary{
+            background:linear-gradient(rgb(7, 128, 228),rgb(4, 71, 126)) no-repeat;
+        }
+
+        .badge-danger{
+            background:linear-gradient(rgb(230, 73, 73),rgb(141, 3, 3)) no-repeat;
         }
     </style>
 
@@ -29,7 +60,7 @@
         crossorigin="anonymous">
 </head>
 
-<body>
+<body Id="body">
     <div class="container">
         <h1 style="text-align:center">猜數字遊戲</h1>
         <div class="row">

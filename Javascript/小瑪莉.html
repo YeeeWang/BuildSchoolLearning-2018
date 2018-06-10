@@ -87,14 +87,24 @@
             font-size: 20px;
             margin-left: 13px;
             text-align: center;
-            background-color: rgb(24, 2, 228);
-            border-color: rgb(24, 2, 228);
+            background: linear-gradient(rgb(17, 135, 233), rgb(6, 4, 126)) no-repeat;
+            border-color: rgb(6, 4, 126);
             color: white;
         }
 
         .btn.btn:hover {
             background-color: rgb(24, 2, 228);
             border-color: rgb(24, 2, 228);
+        }
+
+        .btn.button {
+            background: linear-gradient(rgb(198, 199, 199), rgb(90, 90, 90)) no-repeat;
+            border-color: rgb(90, 90, 90);
+        }
+
+        .btn.btn:hover {
+            background-color: rgb(105, 105, 105);
+            border-color: rgb(105, 105, 105);
         }
 
         .point {
@@ -587,10 +597,10 @@
             e = 0;
             f = 0;
             g = 0;
-            h = 0;           
+            h = 0;
         }
-        
-        function getvalue(){
+
+        function getvalue() {
             $("#t1").val(a);
             $("#t2").val(b);
             $("#t3").val(c);
