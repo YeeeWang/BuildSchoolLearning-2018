@@ -6,36 +6,42 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <style>
-        #body{
-            background: linear-gradient(rgb(14, 176, 252),rgb(32, 207, 56)) no-repeat;
+        #body {
+            background: linear-gradient(rgb(130, 201, 235), rgb(91, 201, 105)) no-repeat;
             color: #000000;
             font-weight: bolder;
         }
+
+        .container{
+            margin: 30px;
+        }
+
         .mapstyle {
             width: 700px;
             height: 580px;
             float: left;
         }
-        
-        .table{
+
+        .table {
             margin-left: 800px;
         }
-        
-        table{
-            border:0.01em solid #000000;
-            border-spacing: 0px;
-        }
 
-        th{
+        table {
             border: 0.01em solid #000000;
             border-spacing: 0px;
-            padding: 6px; 
+            background: white;
         }
 
-        td{
+        th {
             border: 0.01em solid #000000;
             border-spacing: 0px;
-            padding: 6px; 
+            padding: 6px;
+        }
+
+        td {
+            border: 0.01em solid #000000;
+            border-spacing: 0px;
+            padding: 6px;
             width: 120px;
             height: 30px;
             word-break: break-all;
@@ -44,59 +50,83 @@
 </head>
 
 <body Id="body">
-    <div class="row">
-        <div class="col">
-            <h1>請輸入起訖點</h1>
-            <span>起點:</span>
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
-                Id="start">
-            <br/>
-            <br/>
-            <span>迄點:</span>
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
-                Id="arrive">&nbsp;
-            <button type="button" class="btn btn-light" Id="input">查詢</button>
-            <br/>
-            <br/>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>請輸入起訖點</h1>
+                <span>起點:</span>
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" Id="start">
+                <br/>
+                <br/>
+                <span>迄點:</span>
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" Id="arrive">&nbsp;
+                <button type="button" class="btn btn-light" Id="input">查詢</button>
+                <br/>
+                <br/>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-5">
-            <div id="map" class="mapstyle"></div>
-        </div>
-        <div class="col-5 table">
-            <table class="Dis">
-            <tr>
-                <th>運輸方式</td>
-                <th>距離</th>
-                <th>時間</th>
-                <th>價格</th>
-            </tr>    
-            <tr>
-                <td>開車</td>
-                <td><span Id="DDist"></span></td>
-                <td><span Id="DTime"></span></td>
-                <td><span Id="DPrice"></span></td>
-            </tr>
-            <tr class="Dis">
-                <td>大眾運輸</td>
-                <td><span Id="TDist"></span></td>
-                <td><span Id="TTime"></span></td>
-                <td><span Id="TPrice"></span></td>
-            </tr>
-            <tr class="Dis">
-                <td>走路</td>
-                <td><span Id="WDist"></span></td>
-                <td><span Id="WTime"></span></td>
-                <td><span Id="WPrice"></span></td>
-            </tr>
-            <tr class="Dis"></tr>
-                <td>計程車</td>
-                <td><span Id="TADist"></span></td>
-                <td><span Id="TATime"></span></td>
-                <td><span Id="TAPrice"></span></td>
-            </tr>
-            </table>
+        <div class="row">
+            <div class="col-5">
+                <div id="map" class="mapstyle"></div>
+            </div>
+            <div class="col-5 table">
+                <table class="Dis">
+                    <tr>
+                        <th>運輸方式</td>
+                            <th>距離</th>
+                            <th>時間</th>
+                            <th>價格</th>
+                    </tr>
+                    <tr>
+                        <td>開車</td>
+                        <td>
+                            <span Id="DDist"></span>
+                        </td>
+                        <td>
+                            <span Id="DTime"></span>
+                        </td>
+                        <td>
+                            <span Id="DPrice"></span>
+                        </td>
+                    </tr>
+                    <tr class="Dis">
+                        <td>大眾運輸</td>
+                        <td>
+                            <span Id="TDist"></span>
+                        </td>
+                        <td>
+                            <span Id="TTime"></span>
+                        </td>
+                        <td>
+                            <span Id="TPrice"></span>
+                        </td>
+                    </tr>
+                    <tr class="Dis">
+                        <td>走路</td>
+                        <td>
+                            <span Id="WDist"></span>
+                        </td>
+                        <td>
+                            <span Id="WTime"></span>
+                        </td>
+                        <td>
+                            <span Id="WPrice"></span>
+                        </td>
+                    </tr>
+                    <tr class="Dis"></tr>
+                    <td>計程車</td>
+                    <td>
+                        <span Id="TADist"></span>
+                    </td>
+                    <td>
+                        <span Id="TATime"></span>
+                    </td>
+                    <td>
+                        <span Id="TAPrice"></span>
+                    </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -148,24 +178,26 @@
                         var totalDistances = 0;
                         var totalTime = 0;
                         var price = 0;
-                        var pay=0;
-                        for (var i of leg.steps) { console.log("i : ",i.instructions);
+                        var pay = 0;
+                        for (var i of leg.steps) {
+                            console.log("i : ", i.instructions);
                             totalDistances += parseInt(i.distance.value) / 1000;
                             totalTime += parseInt(i.duration.value) / 60;
-                            var string=i.instructions;
+                            var string = i.instructions;
                             console.log(i.instructions);
-                            if(string.indexOf('Toll road')!=-1){
-                                pay+=parseInt(i.distance.value) / 1000;
-                                console.log("i.distance.value : " , i.distance.value);
+                            if (string.indexOf('Toll road') != -1) {
+                                pay += parseInt(i.distance.value) / 1000;
+                                console.log("i.distance.value : ", i.distance.value);
                             }
                         }
                         console.log(pay);
-                        price = totalDistances * 5+pay*1.2;
-                        document.getElementById("DDist").innerText = totalDistances.toFixed(0)+"公里";
-                        var hour=totalTime.toFixed(0)/60;
-                        var second=totalTime.toFixed(0)-hour.toFixed(0)*60;
-                        document.getElementById("DTime").innerText = hour.toFixed(0)+"小時"+second.toFixed(0)+"分鐘";
-                        document.getElementById("DPrice").innerText = price.toFixed(0)+"元";
+                        price = totalDistances * 5 + pay * 1.2;
+                        document.getElementById("DDist").innerText = totalDistances.toFixed(0) + "公里";
+                        var hour = totalTime.toFixed(0) / 60;
+                        var second = totalTime.toFixed(0) - hour.toFixed(0) * 60;
+                        document.getElementById("DTime").innerText = hour.toFixed(0) + "小時" + second.toFixed(
+                            0) + "分鐘";
+                        document.getElementById("DPrice").innerText = price.toFixed(0) + "元";
                     } else {
                         window.alert('Directions request failed due to ' + status);
                     }
@@ -181,16 +213,18 @@
                         directionsDisplay.setDirections(response);
                         var leg = response.routes[0].legs[0];
                         var totalDistances = 0;
-                        var totalTime = 0;                    
+                        var totalTime = 0;
                         for (var i of leg.steps) {
                             totalDistances += parseInt(i.distance.value) / 1000;
-                            totalTime += parseInt(i.duration.value) / 60;                           
+                            totalTime += parseInt(i.duration.value) / 60;
                         }
-                        document.getElementById("TDist").innerText = totalDistances.toFixed(0)+"公里";
-                        var hour=totalTime.toFixed(0)/60;
-                        var second=totalTime.toFixed(0)-hour.toFixed(0)*60;
-                        document.getElementById("TTime").innerText = hour.toFixed(0)+"小時"+second.toFixed(0)+"分鐘";
-                        document.getElementById("TPrice").innerText = response.routes[0].fare.value.toFixed(0)+"元";
+                        document.getElementById("TDist").innerText = totalDistances.toFixed(0) + "公里";
+                        var hour = totalTime.toFixed(0) / 60;
+                        var second = totalTime.toFixed(0) - hour.toFixed(0) * 60;
+                        document.getElementById("TTime").innerText = hour.toFixed(0) + "小時" + second.toFixed(
+                            0) + "分鐘";
+                        document.getElementById("TPrice").innerText = response.routes[0].fare.value.toFixed(
+                            0) + "元";
                     } else {
                         window.alert('Directions request failed due to ' + status);
                     }
@@ -212,11 +246,12 @@
                             totalDistances += parseInt(i.distance.value) / 1000;
                             totalTime += parseInt(i.duration.value) / 60;
                         }
-                        document.getElementById("WDist").innerText = totalDistances.toFixed(0)+"公里";
-                        var hour=totalTime.toFixed(0)/60;
-                        var second=totalTime.toFixed(0)-hour.toFixed(0)*60;
-                        document.getElementById("WTime").innerText = hour.toFixed(0)+"小時"+second.toFixed(0)+"分鐘";
-                        document.getElementById("WPrice").innerText = price.toFixed(0)+"元";
+                        document.getElementById("WDist").innerText = totalDistances.toFixed(0) + "公里";
+                        var hour = totalTime.toFixed(0) / 60;
+                        var second = totalTime.toFixed(0) - hour.toFixed(0) * 60;
+                        document.getElementById("WTime").innerText = hour.toFixed(0) + "小時" + second.toFixed(
+                            0) + "分鐘";
+                        document.getElementById("WPrice").innerText = price.toFixed(0) + "元";
                     } else {
                         window.alert('Directions request failed due to ' + status);
                     }
@@ -233,26 +268,27 @@
                         var totalDistances = 0;
                         var totalTime = 0;
                         var price = 0;
-                        var pay=0;
+                        var pay = 0;
                         for (var i of leg.steps) {
                             totalDistances += parseInt(i.distance.value) / 1000;
                             totalTime += parseInt(i.duration.value) / 60;
-                            var string=i.instructions;
-                            if(string.indexOf('Toll road')!=-1){
-                                pay+=parseInt(i.distance.value) / 1000;
-                                console.log("i.distance.value : " , i.distance.value);
+                            var string = i.instructions;
+                            if (string.indexOf('Toll road') != -1) {
+                                pay += parseInt(i.distance.value) / 1000;
+                                console.log("i.distance.value : ", i.distance.value);
                             }
                         }
                         if (totalDistances <= 1.5) {
-                            price = 85+pay*1.2;
+                            price = 85 + pay * 1.2;
                         } else {
-                            price = 85 + ((totalDistances * 1000 - 1500) / 250 * 5)+pay*1.2; //沒有一個一個取出距離累加，所以要直接用totalDistances
+                            price = 85 + ((totalDistances * 1000 - 1500) / 250 * 5) + pay * 1.2; //沒有一個一個取出距離累加，所以要直接用totalDistances
                         }
-                        document.getElementById("TADist").innerText = totalDistances.toFixed(0)+"公里";
-                        var hour=totalTime.toFixed(0)/60;
-                        var second=totalTime.toFixed(0)-hour.toFixed(0)*60;
-                        document.getElementById("TATime").innerText = hour.toFixed(0)+"小時"+second.toFixed(0)+"分鐘";
-                        document.getElementById("TAPrice").innerText = price.toFixed(0)+"元";
+                        document.getElementById("TADist").innerText = totalDistances.toFixed(0) + "公里";
+                        var hour = totalTime.toFixed(0) / 60;
+                        var second = totalTime.toFixed(0) - hour.toFixed(0) * 60;
+                        document.getElementById("TATime").innerText = hour.toFixed(0) + "小時" + second.toFixed(
+                            0) + "分鐘";
+                        document.getElementById("TAPrice").innerText = price.toFixed(0) + "元";
                     } else {
                         window.alert('Directions request failed due to ' + status);
                     }
