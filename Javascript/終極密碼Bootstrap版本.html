@@ -43,14 +43,14 @@
         </div>
         <div class="row text-center">
             <div class="col mt-3">
-                <input type="text" name="name" style="width:35px;height:38px" Id="start"> 到
-                <input type="text" name="name" style="width:35px;height:38px" Id="end">
+                <span Id="start"></span>  到
+                <span Id="end"></span>
             </div>
         </div>
         <div class="row text-center">
             <div class="col mt-3">
                  還剩下
-                <input type="text" name="name" style="width:30px;height:38px" Id="num">次
+                <span Id="num">次</span>
             </div>
         </div>
         <div class="bt">
@@ -147,18 +147,15 @@
                     break;
                 }
                 if (ans == document.getElementById("txtTempC").value) {
-                    console.log(document.getElementById("txtTempC").value + "猜對了，猜了" + a + "次");
                     alert("恭喜答對");
                     break;
                 } else if (ans > document.getElementById("txtTempC").value) {
                     document.getElementById("start").value = document.getElementById("txtTempC").value;
-                    console.log(document.getElementById("txtTempC").value + "-再大一點，猜了" + a + "次");
                     document.getElementById("txtTempC").value = "";
                     document.getElementById("num").value =8-a;
                     break;
                 } else {
                     document.getElementById("end").value = document.getElementById("txtTempC").value;
-                    console.log(document.getElementById("txtTempC").value + "-再小一點，猜了" + a + "次");
                     document.getElementById("txtTempC").value = "";
                     document.getElementById("num").value =8-a;
                     break;
