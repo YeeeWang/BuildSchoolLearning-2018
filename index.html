@@ -24,13 +24,34 @@
             height: 35rem;
         }
 
+        .btn.btn-primary {
+            color: white;
+            background: linear-gradient(rgb(107, 241, 107), rgb(11, 145, 11)) no-repeat;
+            border-color: rgb(3, 92, 23);
+            width: 175px;
+            height: 38px;
+            border-radius: 15px;
+            font-weight: bolder;
+        }
+
         .btn.btn-secondary {
             color: white;
-            background: linear-gradient(rgb(255, 255, 255),rgb(14, 176, 252)) no-repeat;
+            background: linear-gradient(rgb(213, 255, 253), rgb(14, 176, 252)) no-repeat;
             border-color: rgb(0, 140, 255);
-            width:50px;
-            height: 30px;
-            border-radius:17px;
+            width: 130px;
+            height: 38px;
+            border-radius: 15px;
+            font-weight: bolder;
+        }
+
+        img:hover {
+            width: 495px;
+            height: 270px;
+            z-index: 1;
+            -webkit-transform: translate(-12.5px, -8px);
+            -moz-transform: translate(-12.5px, -8px);
+            -o-transform: translate(-12.5px, -8px);
+            transform: translate(-105px, 0px);
         }
 
         .workimg {
@@ -52,8 +73,8 @@
 </head>
 
 <body style="font-family:微軟正黑體">
-    <div class="container-fluid">        
-        <div class="card bg-dark text-white">       
+    <div class="container-fluid">
+        <div class="card bg-dark text-white">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -88,7 +109,7 @@
                     </p>
                     <br/>
                 </div>
-                <a name="" id="button1" class="btn btn-primary" href='https://www.cakeresume.com/resumes/tra202temu2000/edit' role="button">了解更多 >></a>
+                <a name="" id="button1" class="btn btn-primary" href='https://www.cakeresume.com/resumes/tra202temu2000/edit' role="button">More About Me >></a>
             </div>
         </div>
     </div>
@@ -100,7 +121,7 @@
                 <img class="workimg" src="https://github.com/YeeeWang/BuildSchoolLearning-2018/blob/master/%E4%BD%9C%E5%93%81%E9%9B%86%E6%88%AA%E5%9C%96/trello%E5%9C%96.png?raw=true">
                 <p style="text-align:left;text-indent:2em;padding:5px">依照Trello卡片的新增卡片來練習前端的刻板技巧</p>
                 <p>
-                    <a name="介紹" id="" class="btn btn-secondary" href="Bootstrap/trello/trello.html" role="button">看作品</a>
+                    <a name="介紹" id="" class="btn btn-secondary" href="Bootstrap/trello/trello.html" role="button">View Website</a>
                 </p>
             </div>
             <div class="col-md-4">
@@ -108,7 +129,7 @@
                 <img class="workimg" src="https://github.com/YeeeWang/BuildSchoolLearning-2018/blob/master/%E4%BD%9C%E5%93%81%E9%9B%86%E6%88%AA%E5%9C%96/%E5%AE%98%E7%B6%B2BuildSchool%E5%9C%96.png?raw=true">
                 <p style="text-align:left;text-indent:2em;padding:5px">依照Build School的官網首頁來練習前端的刻板技巧</p>
                 <p>
-                    <a name="介紹" id="" class="btn btn-secondary" href="Bootstrap/Build School/Build School.html" role="button">看作品</a>
+                    <a name="介紹" id="" class="btn btn-secondary" href="Bootstrap/Build School/Build School.html" role="button">View Website</a>
                 </p>
             </div>
             <div class="col-md-4">
@@ -116,7 +137,7 @@
                 <img class="workimg" src="https://github.com/YeeeWang/BuildSchoolLearning-2018/blob/master/%E4%BD%9C%E5%93%81%E9%9B%86%E6%88%AA%E5%9C%96/%E6%96%B0%E8%81%9E%E7%B6%B2%E7%AB%99%E5%9C%96.png?raw=true">
                 <p style="text-align:left;text-indent:2em;padding:5px">依照新聞網站版面來練習前端的刻板技巧..........</p>
                 <p>
-                    <a name="介紹" id="" class="btn btn-secondary" href="http://yeeeeee.azurewebsites.net/" role="button">看作品</a>
+                    <a name="介紹" id="" class="btn btn-secondary" href="http://yeeeeee.azurewebsites.net/" role="button">View Website</a>
                 </p>
             </div>
         </div>
@@ -128,7 +149,7 @@
                 <img class="workimg" src="https://github.com/YeeeWang/BuildSchoolLearning-2018/blob/master/%E4%BD%9C%E5%93%81%E9%9B%86%E6%88%AA%E5%9C%96/%E8%9D%A6%E7%9A%AE%E5%9C%96.png?raw=true">
                 <p style="text-align:left;text-indent:2em;padding:5px">依照蝦皮購物首頁來練習前端的刻板技巧...........</p>
                 <p>
-                    <a name="介紹" id="" class="btn btn-secondary" href="Bootstrap/Shopee.html" role="button">看作品</a>
+                    <a name="介紹" id="" class="btn btn-secondary" href="Bootstrap/Shopee.html" role="button">View Website</a>
                 </p>
             </div>
             <div class="col-md-4">
@@ -136,7 +157,7 @@
                 <img class="workimg" src="https://github.com/YeeeWang/BuildSchoolLearning-2018/blob/master/%E4%BD%9C%E5%93%81%E9%9B%86%E6%88%AA%E5%9C%96/%E7%8C%9C%E6%95%B8%E5%AD%97%E5%9C%96.png?raw=true">
                 <p style="text-align:left;text-indent:2em;padding:5px">點開始遊戲後會產生四個不重複的數字，在空格處輸入四個不同的數字與答案進行比對</p>
                 <p>
-                    <a name="介紹" id="" class="btn btn-secondary" href="Javascript/猜數字遊戲.html" role="button">看作品</a>
+                    <a name="介紹" id="" class="btn btn-secondary" href="Javascript/猜數字遊戲.html" role="button">View Website</a>
                 </p>
             </div>
             <div class="col-md-4">
@@ -144,7 +165,7 @@
                 <img class="workimg" src="https://github.com/YeeeWang/BuildSchoolLearning-2018/blob/master/%E4%BD%9C%E5%93%81%E9%9B%86%E6%88%AA%E5%9C%96/%E6%9C%88%E6%9B%86%E5%9C%96.png?raw=true">
                 <p style="text-align:left;text-indent:2em;padding:5px">不用套件，運用Date自動跑出月曆，並標示當月日期及當日</p>
                 <p>
-                    <a name="介紹" id="" class="btn btn-secondary" href="Javascript/製作月曆.HTML" role="button">看作品</a>
+                    <a name="介紹" id="" class="btn btn-secondary" href="Javascript/製作月曆.HTML" role="button">View Website</a>
                 </p>
             </div>
         </div>
@@ -157,7 +178,7 @@
                 <img class="workimg" src="https://github.com/YeeeWang/BuildSchoolLearning-2018/blob/master/%E4%BD%9C%E5%93%81%E9%9B%86%E6%88%AA%E5%9C%96/%E7%B5%82%E6%A5%B5%E5%AF%86%E7%A2%BC%E5%9C%96.png?raw=true">
                 <p style="text-align:left;text-indent:2em;padding:5px">網頁打開後會自動產生1-100間的數字，在空格處輸入數字進行猜測，會顯示答案所在範圍</p>
                 <p>
-                    <a name="介紹" id="" class="btn btn-secondary" href="Javascript/終極密碼Bootstrap版本.html" role="button">看作品</a>
+                    <a name="介紹" id="" class="btn btn-secondary" href="Javascript/終極密碼Bootstrap版本.html" role="button">View Website</a>
                 </p>
             </div>
             <div class="col-md-4">
@@ -165,7 +186,7 @@
                 <img class="workimg" src="https://github.com/YeeeWang/BuildSchoolLearning-2018/blob/master/%E4%BD%9C%E5%93%81%E9%9B%86%E6%88%AA%E5%9C%96/%E9%81%8B%E5%85%B7%E5%83%B9%E6%A0%BC%E5%9C%96.png?raw=true">
                 <p style="text-align:left;text-indent:2em;padding:5px">輸入起訖點後，點查詢可顯示出各種運具之運輸價格</p>
                 <p>
-                    <a name="介紹" id="" class="btn btn-secondary" href="Javascript/運具價格計算.html" role="button">看作品</a>
+                    <a name="介紹" id="" class="btn btn-secondary" href="Javascript/運具價格計算.html" role="button">View Website</a>
                 </p>
             </div>
             <div class="col-md-4">
@@ -173,7 +194,7 @@
                 <img class="workimg" src="https://github.com/YeeeWang/BuildSchoolLearning-2018/blob/master/%E4%BD%9C%E5%93%81%E9%9B%86%E6%88%AA%E5%9C%96/%E5%B0%8F%E7%91%AA%E8%8E%89.png?raw=true">
                 <p style="text-align:left;text-indent:2em;padding:5px">噢啊....................................................</p>
                 <p>
-                    <a name="介紹" id="" class="btn btn-secondary" href="Javascript/小瑪莉.HTML" role="button">看作品</a>
+                    <a name="介紹" id="" class="btn btn-secondary" href="Javascript/小瑪莉.HTML" role="button">View Website</a>
                 </p>
             </div>
         </div>
