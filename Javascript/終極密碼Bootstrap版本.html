@@ -8,19 +8,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <style>
+        #body{
+            font-family:"微軟正黑體";
+            background: rgb(29, 29, 29);
+            color: white;
+        }
+        
         .bt {
             margin-top: 20px;
         }
 
         .bt button {
             width: 60px;
-            height: 40px;
+            height: 60px;
+            border-radius: 30px;
+            border-color: white;
+            border-width: 2px;
+            background: black;
+            color: white;
             margin: 5px;
             background-color: rgb(204, 204, 204);
         }
 
+        #button{
+            background: black;
+        }
+
         .bt button:hover {
             background-color: gray;
+        }
+
+        #cmdClean{
+            background: red;
+        }
+
+        #turn{
+            background: green;
         }
     </style>
     <!-- Bootstrap CSS -->
@@ -28,7 +51,7 @@
         crossorigin="anonymous">
 </head>
 
-<body>
+<body Id="body">
     <div class="container">
         <div class="row text-center">
             <div class="col">
@@ -43,13 +66,13 @@
         </div>
         <div class="row text-center">
             <div class="col mt-3">
-                <span Id="start"></span>  到
+                <span Id="start"></span> 到
                 <span Id="end"></span>
             </div>
         </div>
         <div class="row text-center">
             <div class="col mt-3">
-                 還剩下
+                還剩下
                 <span Id="num"></span>次
             </div>
         </div>
@@ -59,13 +82,13 @@
 
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-light" Name="button">1</button>
+                    <button type="button" class="btn" Name="button" Id="button">1</button>
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-light" Name="button">2</button>
+                    <button type="button" class="btn" Name="button" Id="button">2</button>
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-light" Name="button">3</button>
+                    <button type="button" class="btn" Name="button" Id="button">3</button>
                 </div>
             </div>
             <div class="row text-center">
@@ -73,13 +96,13 @@
 
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-light" Name="button">4</button>
+                    <button type="button" class="btn" Name="button" Id="button">4</button>
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-light" Name="button">5</button>
+                    <button type="button" class="btn" Name="button" Id="button">5</button>
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-light" Name="button">6</button>
+                    <button type="button" class="btn" Name="button" Id="button">6</button>
                 </div>
             </div>
             <div class="row text-center">
@@ -87,13 +110,13 @@
 
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-light" Name="button">7</button>
+                    <button type="button" class="btn" Name="button" Id="button">7</button>
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-light" Name="button">8</button>
+                    <button type="button" class="btn" Name="button" Id="button">8</button>
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-light" Name="button">9</button>
+                    <button type="button" class="btn" Name="button" Id="button">9</button>
                 </div>
             </div>
             <div class="row text-center">
@@ -101,13 +124,13 @@
 
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-light" Name="button" Id="cmdClean">清除</button>
+                    <button type="button" class="btn" Name="button" Id="cmdClean">清除</button>
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-light" Name="button">0</button>
+                    <button type="button" class="btn" Name="button" Id="button">0</button>
                 </div>
                 <div class="col-2">
-                    <button type="button" class="btn btn-light" Name="button" Id="turn">輸入</button>
+                    <button type="button" class="btn" Name="button" Id="turn">輸入</button>
                 </div>
             </div>
         </div>
@@ -126,6 +149,7 @@
         var buttons = document.getElementsByTagName("button");
         document.getElementById("start").innerHTML = 0;
         document.getElementById("end").innerHTML = 100;
+        document.getElementById("num").innerHTML = 8;
         for (var i = 0; i < buttons.length; i++) {
             var button = buttons[i]; //把buttons內的某個按鈕指派給button
             button.onclick = function () { //button按下去就把值加入txtTempC
@@ -152,12 +176,12 @@
                 } else if (ans > document.getElementById("txtTempC").value) {
                     document.getElementById("start").innerHTML = document.getElementById("txtTempC").value;
                     document.getElementById("txtTempC").value = "";
-                    document.getElementById("num").innerHTML =8-a;
+                    document.getElementById("num").innerHTML = 8 - a;
                     break;
                 } else {
                     document.getElementById("end").innerHTML = document.getElementById("txtTempC").value;
                     document.getElementById("txtTempC").value = "";
-                    document.getElementById("num").innerHTML =8-a;
+                    document.getElementById("num").innerHTML = 8 - a;
                     break;
                 }
             }
