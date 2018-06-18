@@ -457,7 +457,10 @@
             }
             var button = document.getElementById("restart");
             button.onclick = function () {
-                location.reload();
+                lastpoint = 50;
+                judge(lastpoint);
+                bricks[currentBrick].className = "img-responsive";
+                currentBrick=0;
             }
         }
 
