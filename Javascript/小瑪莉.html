@@ -459,6 +459,7 @@
             button.onclick = function () {
                 lastpoint = 50;
                 judge(lastpoint);
+                newStep = 0;
                 bricks[currentBrick].className = "img-responsive";
                 currentBrick=0;
             }
@@ -480,43 +481,44 @@
 
             } else {
                 rule(realstep);
+                console.log(realstep);
                 tozero();
                 getvalue();
             }
         }
         init();
 
-        function rule(Steps) {
-            if (Steps == 2 || Steps == 8 || Steps == 13 || Steps == 19 || Steps == 24 ||
-                Steps == 30) {
+        function rule(realstep) {
+            if (realstep == 2 || realstep == 8 || realstep == 13 || realstep == 19 || realstep == 24 ||
+            realstep == 30) {
                 lastpoint += 5 * h;
                 judgeover(lastpoint);
             }
-            if (Steps == 4 || Steps == 9 || Steps == 15 || Steps == 21 || Steps == 28) {
+            if (realstep == 4 || realstep == 9 || realstep == 15 || realstep == 21 || realstep == 28) {
                 lastpoint += 10 * g;
                 judgeover(lastpoint);
             }
-            if (Steps == 1 || Steps == 7 || Steps == 14 || Steps == 20 || Steps == 25) {
+            if (realstep == 1 || realstep == 7 || realstep == 14 || realstep == 20 || realstep == 25) {
                 lastpoint += 15 * f;
                 judgeover(lastpoint);
             }
-            if (Steps == 6 || Steps == 17 || Steps == 23 || Steps == 32) {
+            if (realstep == 6 || realstep == 17 || realstep == 23 || realstep == 32) {
                 lastpoint += 20 * e;
                 judgeover(lastpoint);
             }
-            if (Steps == 3 || Steps == 11 || Steps == 18 || Steps == 27) {
+            if (realstep == 3 || realstep == 11 || realstep == 18 || realstep == 27) {
                 lastpoint += 30 * d;
                 judgeover(lastpoint);
             }
-            if (Steps == 12 || Steps == 22 || Steps == 31) {
+            if (realstep == 12 || realstep == 22 || realstep == 31) {
                 lastpoint += 40 * c;
                 judgeover(lastpoint);
             }
-            if (Steps == 5 || Steps == 16 || Steps == 26) {
+            if (realstep == 5 || realstep == 16 || realstep == 26) {
                 lastpoint += 50 * b;
                 judgeover(lastpoint);
             }
-            if (Steps == 10 || Steps == 29) {
+            if (realstep == 10 || realstep == 29) {
                 lastpoint += 100 * a;
                 judgeover(lastpoint);
             }
